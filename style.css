@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark theme (default) */
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --text-secondary: #cccccc;
+    --text-tertiary: #999999;
+    --accent-color: #ff385c;
+}
+
+body.light-theme {
+    /* Light theme */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --text-secondary: #333333;
+    --text-tertiary: #666666;
+    --accent-color: #ff385c;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    padding: 30px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Custom Logo Image */
+.logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Default Logo */
+.default-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color);
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-45deg);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Header Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact {
+    display: none;
+}
+
+.contact a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    transition: color 0.3s ease;
+}
+
+/* Mobile Contact */
+.contact-mobile {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.contact-mobile a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    transition: color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.theme-toggle:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+body.light-theme .theme-toggle .sun-icon {
+    display: block;
+}
+
+body.light-theme .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.heading {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+/* Typing Cursor */
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--text-color);
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Countdown Styles */
+.countdown {
+    display: flex;
+    gap: 20px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-item .count {
+    font-size: 56px;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.countdown-item .label {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-top: 8px;
+    text-transform: capitalize;
+}
+
+/* Add colons between countdown items */
+.countdown-item:not(:last-child)::after {
+    content: ':';
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--text-color);
+    position: absolute;
+    margin-left: 80px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Description Styles */
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .heading {
+        font-size: 64px;
+    }
+
+    .contact {
+        display: block;
+    }
+
+    .contact-mobile {
+        display: none;
+    }
+
+    .countdown-item .count {
+        font-size: 72px;
+    }
+
+    .countdown-item:not(:last-child)::after {
+        font-size: 72px;
+        margin-left: 100px;
+    }
+
+    .countdown {
+        gap: 30px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .header {
+        padding: 40px 0;
+    }
+
+    .heading {
+        font-size: 80px;
+        margin-bottom: 60px;
+    }
+
+    .content-wrapper {
+        flex-direction: row;
+        gap: 80px;
+        align-items: flex-start;
+    }
+
+    .countdown-section {
+        flex: 0 0 auto;
+    }
+
+    .description-section {
+        flex: 1;
+        padding-top: 20px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .countdown-item .count {
+        font-size: 80px;
+    }
+
+    .countdown-item .label {
+        font-size: 16px;
+    }
+
+    .countdown-item:not(:last-child)::after {
+        font-size: 80px;
+        margin-left: 110px;
+    }
+}
